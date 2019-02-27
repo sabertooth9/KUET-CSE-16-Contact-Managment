@@ -1,31 +1,33 @@
 package com.nuhash.kuetcse16;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.SearchView;
+import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     String maindata;
     data_handler dataHandler;
     static ArrayList<student> arr;
@@ -34,12 +36,15 @@ public class MainActivity extends AppCompatActivity {
     Adapter adapter;
     SearchManager searchManager;
     SearchView searchView;
-
+    FloatingActionButton fabx;
+    Toolbar toolbar;
+    SwipeRefreshLayout swipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        setSupportActionBar(toolbar);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -80,20 +85,82 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onBackPressed();
     }
-
-    void init() {
-        arr = new ArrayList<>();
-        dataHandler = new data_handler();
-        maindata = dataHandler.Give_data();
+    void set_view(){
         process_JSON();
         adapter = new Adapter(arr, MainActivity.this);
-        recyclerView = findViewById(R.id.recycler_view_name);
         layoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
     }
+    void init() {
+        toolbar=findViewById(R.id.toolbar);
+        swipeRefreshLayout=findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor(R.color.colorPrimary),
+                getResources().getColor(android.R.color.holo_green_dark),getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_orange_dark),getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_blue_dark),getResources().getColor(android.R.color.holo_blue_light),getResources().getColor(android.R.color.holo_blue_bright));
+        /*swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+                GETDATA getdata=new GETDATA();
+                getdata.execute();
+                set_view();
+            }
+        });*/
+        //fabx=findViewById(R.id.fab1);
+        arr = new ArrayList<>();
+        dataHandler = new data_handler();
+        maindata = dataHandler.Give_data();
+        recyclerView = findViewById(R.id.recycler_view_name);
+        set_view();
+    }
 
+    @Override
+    public void onRefresh() {
+        GETDATA getdata=new GETDATA();
+        getdata.execute();
+        set_view();
+    }
+    private class GETDATA extends AsyncTask<Void, Void, Void> {
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Updating");
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            HttpHandler sh = new HttpHandler();
+            String jsnStr = sh.makeServiceCall(dataHandler.Give_API());
+            try {
+                Log.e("JSON", jsnStr);
+            } catch (Exception e) {
+                Log.e("JSONERROR", e.getMessage());
+            }
+            if (jsnStr != null) {
+                dataHandler.setJSONstr(jsnStr);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            progressDialog.dismiss();
+            swipeRefreshLayout.setRefreshing(false);
+            Toast.makeText(MainActivity.this, "DONE", Toast.LENGTH_SHORT).show();
+            set_view();
+        }
+    }
     void process_JSON() {
+        maindata=dataHandler.Give_data();
         student st;
         try {
             JSONArray jsonArray = new JSONArray(maindata);

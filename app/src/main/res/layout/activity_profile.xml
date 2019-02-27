@@ -14,19 +14,25 @@
         android:padding="2dp">
 
         <ImageView
+            android:visibility=""
             android:id="@+id/image_view_profile_cover"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/coverpic"
             android:scaleType="fitXY"/>
 
-        <ImageView
-            android:visibility="gone"
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/image_view_profile_profile"
             android:layout_width="150dp"
+            android:visibility="gone"
             android:layout_height="150dp"
+            app:civ_border_color="@color/PapayaWhip"
+            app:civ_border_width="2dp"
+            app:civ_shadow="false"
+            app:civ_shadow_radius="10"
+            app:civ_background_color="@color/Wheat"
             android:layout_gravity="bottom|center"
-            android:background="@drawable/ic_account_circle_black_36dp" />
+            android:src="@drawable/nuhash_bhai" />
     </FrameLayout>
 
     <FrameLayout
@@ -217,6 +223,7 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"

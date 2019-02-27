@@ -95,11 +95,13 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:text="Call"
+                android:textAlignment="center"
                 app:icon="@drawable/ic_call_white_18dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
-                android:text="Send a text"
+                android:text="Send text"
+                android:textAlignment="center"
                 android:layout_margin="1dp"
                 android:id="@+id/button_text_adapter"
                 android:layout_height="match_parent"

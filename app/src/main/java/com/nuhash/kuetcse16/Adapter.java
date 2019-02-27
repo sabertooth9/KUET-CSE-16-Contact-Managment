@@ -88,6 +88,9 @@ public class Adapter extends RecyclerView.Adapter<view_holder> implements Filter
                 public void onClick(View v) {
                     stt1=ar.get(position);
                     Intent intent = new Intent(ctx, ProfileActivity.class);
+                    if(stt1.roll.equals("1607040")){
+                        intent.putExtra("DEV",true);
+                    }
                     ctx.startActivity(intent);
                 }
             });
