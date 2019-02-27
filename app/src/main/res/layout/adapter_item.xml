@@ -1,109 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view_adapter"
+    android:layout_margin="2dp"
     android:padding="2dp"
-    android:layout_height="wrap_content">
-    <com.google.android.material.card.MaterialCardView
+    app:cardBackgroundColor="@color/AliceBlue"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="30dp"
+    app:strokeColor="@color/Blue">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        app:contentPadding="2dp"
-        app:cardCornerRadius="5dp"
-        android:id="@+id/card_view_adapter"
-        android:layout_height="wrap_content">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/image_view_adapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/ic_account_circle_black_18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/text_view_roll_adapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="roll"
-                app:layout_constraintStart_toEndOf="@+id/image_view_adapter"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/text_view_name_adapter"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:text="name_nick"
-                app:layout_constraintStart_toEndOf="@+id/text_view_roll_adapter"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_weight="1"
+                android:elevation="10dp"
+                android:background="@color/AliceBlue"
+                android:fontFamily="@font/google_sans_bold"
+                android:padding="5dp"
+                android:layout_margin="1dp"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
+            <TextView
+                android:layout_margin="1dp"
+                android:id="@+id/text_view_roll_adapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/AliceBlue"
+                android:fontFamily="@font/google_sans_medium"
+                android:padding="5dp"
+                android:elevation="10dp"
+                android:text="Roll"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_margin="1dp"
+                android:id="@+id/text_view_phone_adapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/AliceBlue"
+                android:fontFamily="@font/google_sans_medium"
+                android:padding="5dp"
+                android:text="Phone Number"
+                android:textAlignment="center"
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/text_view_blood_adapter"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:layout_margin="1dp"
+                android:background="@color/AliceBlue"
+                android:textColor="@color/Red"
+                android:textColorHighlight="@color/Black"
+                android:fontFamily="@font/google_sans_mediumtalic"
+                android:padding="5dp"
                 android:text="Blood"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.279"
-                app:layout_constraintStart_toEndOf="@+id/text_view_name_adapter"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509" />
+                android:textAlignment="center"
+                android:textSize="15sp" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/text_view_phone_adapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="phone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_view_adapter"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_roll_adapter" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_call_adapter"
+                android:layout_margin="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Call"
+                app:icon="@drawable/ic_call_white_18dp" />
 
-            <ImageButton
-                android:id="@+id/image_button_call_adapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="96dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/todo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_view_name_adapter"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509"
-                android:background="@drawable/ic_call_black_18dp" />
-
-            <ImageButton
-                android:id="@+id/image_button_message_adapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/todo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_button_call_adapter"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/ic_message_black_18dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:text="Send a text"
+                android:layout_margin="1dp"
+                android:id="@+id/button_text_adapter"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:textColorHighlight="@color/Black"
+                app:icon="@drawable/ic_textsms_black_18dp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

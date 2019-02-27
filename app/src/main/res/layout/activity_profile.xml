@@ -17,14 +17,16 @@
             android:id="@+id/image_view_profile_cover"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/colorPrimary" />
+            android:background="@drawable/coverpic"
+            android:scaleType="fitXY"/>
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/image_view_profile_profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="bottom|center"
-            android:background="@color/colorPrimaryDark" />
+            android:background="@drawable/ic_account_circle_black_36dp" />
     </FrameLayout>
 
     <FrameLayout
@@ -212,13 +214,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </ScrollView>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
-            android:padding="5dp"
-            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:src="@drawable/ic_edit_black_24dp" />
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_edit_white_24dp" />
     </FrameLayout>
 </LinearLayout>

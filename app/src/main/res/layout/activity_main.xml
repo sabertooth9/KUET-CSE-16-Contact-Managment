@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_dummi"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
