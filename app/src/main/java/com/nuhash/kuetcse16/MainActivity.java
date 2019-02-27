@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -136,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(MainActivity.this);
-            progressDialog.setMessage("Updating");
+            progressDialog.setMessage("Updating..");
             progressDialog.show();
         }
 
@@ -160,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             super.onPostExecute(aVoid);
             progressDialog.dismiss();
             swipeRefreshLayout.setRefreshing(false);
-            Toast.makeText(MainActivity.this, "DONE", Toast.LENGTH_SHORT).show();
+            Snackbar.make(coordinatorLayout,"Done..!",Snackbar.LENGTH_LONG).show();
             set_view();
         }
     }

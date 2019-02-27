@@ -1,11 +1,5 @@
 package com.nuhash.kuetcse16;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
-
 public class data_handler {
     String JSONstr;
     String update;

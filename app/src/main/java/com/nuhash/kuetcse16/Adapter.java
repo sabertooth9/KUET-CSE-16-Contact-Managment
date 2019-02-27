@@ -3,17 +3,14 @@ package com.nuhash.kuetcse16;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Debug;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -88,9 +85,6 @@ public class Adapter extends RecyclerView.Adapter<view_holder> implements Filter
                 public void onClick(View v) {
                     stt1=ar.get(position);
                     Intent intent = new Intent(ctx, ProfileActivity.class);
-                    if(stt1.roll.equals("1607040")){
-                        intent.putExtra("DEV",true);
-                    }
                     ctx.startActivity(intent);
                 }
             });
@@ -111,9 +105,6 @@ public class Adapter extends RecyclerView.Adapter<view_holder> implements Filter
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 String charString = constraint.toString();
-                if(charString.equals("NUHASH")){
-                    Log.e("DEBUG","come here");
-                }
                 ArrayList<student>xx=new ArrayList<>();
                 if (charString.isEmpty()) {
                     xx = arx;
@@ -133,9 +124,13 @@ public class Adapter extends RecyclerView.Adapter<view_holder> implements Filter
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                ar= (ArrayList<student>) results.values;
-                Log.e("DEBUG RES", ar.size()+"");
-                notifyDataSetChanged();
+                try {
+                    ar = (ArrayList<student>) results.values;
+                    Log.e("DEBUG RES", ar.size() + "");
+                    notifyDataSetChanged();
+                }catch (Exception e){
+                    Log.e("DEBUG",e.getMessage());
+                }
             }
         };
     }
