@@ -5,7 +5,7 @@
     "Nick Name": "RAKIB",
     "Blood Group": "B+",
     "College": "DHAKA CITY COLLEGE",
-    "Hometown": "NARAIL",
+    "Hometown": "NARAILI",
     "Phone": 1683086321,
     "Birthdate": "7/10/1998"
   },
