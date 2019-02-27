@@ -14,25 +14,26 @@
         android:padding="2dp">
 
         <ImageView
-            android:visibility="visible"
             android:id="@+id/image_view_profile_cover"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/coverpic"
-            android:scaleType="fitXY"/>
+            android:contentDescription="@string/todo"
+            android:scaleType="fitXY"
+            android:visibility="visible" />
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/image_view_profile_profile"
             android:layout_width="150dp"
-            android:visibility="gone"
             android:layout_height="150dp"
+            android:layout_gravity="bottom|center"
+            android:src="@drawable/nuhash_bhai"
+            android:visibility="gone"
+            app:civ_background_color="@color/Wheat"
             app:civ_border_color="@color/PapayaWhip"
             app:civ_border_width="2dp"
             app:civ_shadow="false"
-            app:civ_shadow_radius="10"
-            app:civ_background_color="@color/Wheat"
-            android:layout_gravity="bottom|center"
-            android:src="@drawable/nuhash_bhai" />
+            app:civ_shadow_radius="10" />
     </FrameLayout>
 
     <FrameLayout
@@ -53,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:hint="Roll"
+                    android:hint="@string/roll"
                     android:padding="2dp"
                     app:boxCornerRadiusBottomEnd="5dp"
                     app:boxCornerRadiusBottomStart="5dp"
@@ -67,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         android:editable="false"
-                        android:text="My roll is Name" />
+                        android:text="@string/my_roll_is_name" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:hint="Name"
+                    android:hint="@string/name"
                     android:padding="2dp"
                     app:boxCornerRadiusBottomEnd="5dp"
                     app:boxCornerRadiusBottomStart="5dp"
@@ -89,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         android:editable="false"
-                        android:text="My name is Name" />
+                        android:text="@string/my_name_is_name" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
@@ -103,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
-                        android:hint="Phone"
+                        android:hint="@string/phone"
                         android:padding="2dp"
                         app:boxCornerRadiusBottomEnd="5dp"
                         app:boxCornerRadiusBottomStart="5dp"
@@ -117,7 +118,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="false"
                             android:editable="false"
-                            android:text="My phone is" />
+                            android:text="@string/my_phone_is" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -127,7 +128,7 @@
                         android:layout_margin="2dp"
 
                         android:layout_weight="2"
-                        android:hint="Blood Group"
+                        android:hint="@string/blood_group"
                         android:padding="2dp"
                         app:boxCornerRadiusBottomEnd="5dp"
                         app:boxCornerRadiusBottomStart="5dp"
@@ -141,7 +142,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="false"
                             android:editable="false"
-                            android:text="My blood is Name" />
+                            android:text="@string/my_blood_is_name" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -156,7 +157,7 @@
                         android:layout_margin="2dp"
 
                         android:layout_weight="1"
-                        android:hint="Hometown"
+                        android:hint="@string/hometown"
                         android:padding="2dp"
                         app:boxCornerRadiusBottomEnd="5dp"
                         app:boxCornerRadiusBottomStart="5dp"
@@ -170,7 +171,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="false"
                             android:editable="false"
-                            android:text="My home is" />
+                            android:text="@string/my_home_is" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -179,7 +180,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
-                        android:hint="College"
+                        android:hint="@string/college"
                         android:padding="2dp"
                         app:boxCornerRadiusBottomEnd="5dp"
                         app:boxCornerRadiusBottomStart="5dp"
@@ -193,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="false"
                             android:editable="false"
-                            android:text="My College" />
+                            android:text="@string/my_college" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -202,7 +203,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:hint="BD"
+                    android:hint="@string/bd"
                     android:padding="2dp"
                     app:boxCornerRadiusBottomEnd="5dp"
                     app:boxCornerRadiusBottomStart="5dp"
@@ -216,19 +217,19 @@
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         android:editable="false"
-                        android:text="My BD is Name" />
+                        android:text="@string/my_bd_is_name" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|end"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:src="@drawable/ic_edit_white_24dp" />
+            android:src="@drawable/ic_edit_white_24dp"
+            android:visibility="gone" />
     </FrameLayout>
 </LinearLayout>

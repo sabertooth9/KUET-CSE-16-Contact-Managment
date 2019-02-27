@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">KUET CSE 2K16</string>
     <string name="todo">TODO</string>
+    <string name="roll">Roll</string>
+    <string name="my_roll_is_name">My roll is Name</string>
+    <string name="my_bd_is_name">My BD is Name</string>
+    <string name="bd">BD</string>
+    <string name="my_college">My College</string>
+    <string name="college">College</string>
+    <string name="my_home_is">My home is</string>
+    <string name="hometown">Hometown</string>
+    <string name="my_blood_is_name">My blood is Name</string>
+    <string name="blood_group">Blood Group</string>
+    <string name="my_phone_is">My phone is</string>
+    <string name="phone">Phone</string>
+    <string name="my_name_is_name">My name is Name</string>
+    <string name="name">Name</string>
 </resources>
