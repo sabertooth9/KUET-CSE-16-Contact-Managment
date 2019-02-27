@@ -2,6 +2,7 @@ package com.nuhash.kuetcse16;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -19,6 +20,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     SearchView searchView;
     FloatingActionButton fabx;
     Toolbar toolbar;
+    CoordinatorLayout coordinatorLayout;
     SwipeRefreshLayout swipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         setContentView(R.layout.activity_main);
         init();
         setSupportActionBar(toolbar);
+        Snackbar.make(coordinatorLayout,"Swipe Down to Update Data",Snackbar.LENGTH_LONG).show();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         recyclerView.setLayoutManager(layoutManager);
     }
     void init() {
+        coordinatorLayout=findViewById(R.id.coordinate_layout);
         toolbar=findViewById(R.id.toolbar);
         swipeRefreshLayout=findViewById(R.id.swipeRefresh);
         swipeRefreshLayout.setOnRefreshListener(this);
