@@ -13,11 +13,14 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -30,6 +33,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     String maindata;
+    Display mDisplay;
     data_handler dataHandler;
     static ArrayList<student> arr;
     LinearLayoutManager layoutManager;
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     SearchManager searchManager;
     SearchView searchView;
     FloatingActionButton fabx;
+    ImageView cover;
     Toolbar toolbar;
     CoordinatorLayout coordinatorLayout;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -47,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         setContentView(R.layout.activity_main);
         init();
         setSupportActionBar(toolbar);
+        Log.e("DEBUG WIDTH",mDisplay.getWidth()+"");
+        Log.e("DEBUG HIGHT",mDisplay.getHeight()+"");
+        Glide.with(MainActivity.this).load(R.drawable.coverpic).override(858 , 480).into(cover);
         Snackbar.make(coordinatorLayout,"Swipe Down to Update Data",Snackbar.LENGTH_LONG).show();
     }
     @Override
@@ -96,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         recyclerView.setLayoutManager(layoutManager);
     }
     void init() {
+        mDisplay=getWindowManager().getDefaultDisplay();
+        cover=findViewById(R.id.backdrop);
         coordinatorLayout=findViewById(R.id.coordinate_layout);
         toolbar=findViewById(R.id.toolbar);
         swipeRefreshLayout=findViewById(R.id.swipeRefresh);
