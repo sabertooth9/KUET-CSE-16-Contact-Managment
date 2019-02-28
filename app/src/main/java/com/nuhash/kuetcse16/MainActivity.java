@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onBackPressed();
     }
     void set_view(){
+        arr.clear();
         process_JSON();
         adapter = new Adapter(arr, MainActivity.this);
         layoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
