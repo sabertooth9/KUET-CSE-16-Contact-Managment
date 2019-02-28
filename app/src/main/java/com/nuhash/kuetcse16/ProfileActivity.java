@@ -24,8 +24,15 @@ public class ProfileActivity extends AppCompatActivity {
     Display mDisplay;
 
     @Override
+    protected void onPause() {
+        overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+        super.onPause();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.fadein,R.anim.fadeout);
         setContentView(R.layout.activity_profile);
         init();
         name.setText(sx.getName());
@@ -42,6 +49,9 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        set_image();
+    }
+    void set_image(){
         if (sx.getRoll().equals("1607031")) {
             propic.setVisibility(View.VISIBLE);
             Glide.with(ProfileActivity.this).load(R.drawable.noman).override(250, 250).into(propic);
@@ -165,7 +175,6 @@ public class ProfileActivity extends AppCompatActivity {
             ////propic.setImageDrawable(getDrawable(R.drawable.sakha));
         }
     }
-
     void init() {
         mDisplay = getWindowManager().getDefaultDisplay();
         sx = Adapter.stt1;

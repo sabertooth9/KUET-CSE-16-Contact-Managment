@@ -1,8 +1,10 @@
 package com.nuhash.kuetcse16;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.transition.Transition;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +20,12 @@ import com.google.android.material.card.MaterialCardView;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 class view_holder extends RecyclerView.ViewHolder {
     MaterialButton call,message;
-    MaterialCardView materialCardView;
+    CardView materialCardView;
     TextView roll,name,phone,blood;
     view_holder(@NonNull View itemView) {
         super(itemView);
@@ -40,6 +43,7 @@ public class Adapter extends RecyclerView.Adapter<view_holder> implements Filter
     student stt;
     ArrayList<student>arx,ar;
     Context ctx;
+    Transition transition;
 
     public Adapter(ArrayList<student> ar, Context ctx) {
         this.arx = ar;

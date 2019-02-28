@@ -22,7 +22,7 @@ public class student {
         this.blood = blood;
     }
     boolean contains(String x){
-        if(name.contains(x.toUpperCase()) || nickname.contains(x.toUpperCase()) || hometown.contains(x.toUpperCase()) || college.contains(x.toUpperCase()) || blood.equals(x) || roll.contains(x))return  true;
+        if(name.contains(x.toUpperCase()) || nickname.contains(x.toUpperCase()) || hometown.contains(x.toUpperCase()) || college.contains(x.toUpperCase()) || blood.equals(x.toUpperCase()) || roll.contains(x))return  true;
         return  false;
     }
     public String getName() {
