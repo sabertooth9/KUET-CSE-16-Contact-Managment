@@ -36,7 +36,8 @@ class view_holder extends RecyclerView.ViewHolder {
     }
 }
 public class Adapter extends RecyclerView.Adapter<view_holder> implements Filterable {
-    static student stt,stt1;
+    static student stt1;
+    student stt;
     ArrayList<student>arx,ar;
     Context ctx;
 
@@ -65,7 +66,7 @@ public class Adapter extends RecyclerView.Adapter<view_holder> implements Filter
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:"+stt.phone));
+                    intent.setData(Uri.parse("tel:"+ar.get(position).getPhone()));
                     ctx.startActivity(intent);
                     //Toast.makeText(ctx, "CALL BUTTON", Toast.LENGTH_LONG).show();
                 }
@@ -74,7 +75,7 @@ public class Adapter extends RecyclerView.Adapter<view_holder> implements Filter
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.fromParts("sms",stt.phone,null));
+                    intent.setData(Uri.fromParts("sms",ar.get(position).getPhone(),null));
                     ctx.startActivity(intent);
                     //Toast.makeText(ctx, "MESSEGE BUTTON", Toast.LENGTH_LONG).show();
                 }
@@ -85,6 +86,7 @@ public class Adapter extends RecyclerView.Adapter<view_holder> implements Filter
                 public void onClick(View v) {
                     stt1=ar.get(position);
                     Intent intent = new Intent(ctx, ProfileActivity.class);
+                    intent.putExtra("position",position);
                     ctx.startActivity(intent);
                 }
             });
